@@ -1,0 +1,20 @@
+version: '3.9'
+
+volumes:
+  cache:
+
+services:
+  picapport:
+    image: osbornk/picapport
+    restart: always
+    ports:
+      - 80
+    network_mode: bridge
+    environment:
+      - XMS=512m
+      - XMX=1g
+      - PICAPPORT_LANG=en
+    volumes:
+      - /path/to/your/configuration:/opt/picapport/.picapport
+      - /path/to/your/fotos:/srv/photos
+      - cache:/srv/cache
